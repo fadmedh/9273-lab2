@@ -30,6 +30,13 @@ perform_scan() {
         
         # Extract just the filename without the full path
         filename=$(basename "$file")
+
+        # --- WHITELIST CHECK ---
+        if [ -f "whitelist.txt" ] && grep -qxF "$filename" "whitelist.txt" 2>/dev/null; then
+            continue
+        fi
+        # -----------------------
+        
         is_malicious=0
         
         # Check for flagged extensions
@@ -79,7 +86,7 @@ while true; do
         # Run the scan again because a change happened
         perform_scan
 
-        # Update the old snapshot with the new one for the next loop
-        cp directory-info.new directory-info.last
+        # Regenerate snapshot correctly as per instructions
+        ls -l "$MONITOR_DIR" > directory-info.last
     fi
 done

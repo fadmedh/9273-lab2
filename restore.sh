@@ -67,7 +67,9 @@ while true; do
     case $option in
         1)
             mv "$selected_file" "$TARGET_DIR/"
-            echo "Restored $filename to $TARGET_DIR."
+            # Add to whitelist (avoid duplicates)
+            grep -qxF "$filename" whitelist.txt 2>/dev/null || echo "$filename" >> whitelist.txt
+            echo "Restored $filename to $TARGET_DIR and added to whitelist."
             ;;
         2)
             rm "$selected_file"
