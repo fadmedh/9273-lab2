@@ -44,7 +44,7 @@ Before configuring the cron job, ensure the following:
 3. Use the arrow keys to scroll to the very bottom of the file.
 4. Add the following line to schedule the script to run every minute (the `sleep 23` inside the script will ensure it runs at exactly second 23):
    ```cron
-   * * * * * /home/os/9273_lab2/antivirus-cron.sh /home/os/9273_lab2/test_dir /home/os/9273_lab2/malicious_dir
+   * * * * * /home/os/9273-lab2/antivirus-cron.sh /home/os/9273-lab2/test_dir /home/os/9273-lab2/malicious_dir
    ```
    
 5. Save the file and exit. If using `nano`, press `Ctrl + O`, then `Enter` to save, and `Ctrl + X` to exit.
